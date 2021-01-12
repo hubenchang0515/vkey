@@ -74,6 +74,15 @@ static int send_key(int fd, unsigned int keycode, int pressed)
         return EXIT_FAILURE;
     }
 
+    event.type = EV_SYN;
+    event.code = SYN_REPORT;
+    gettimeofday(&(event.time), 0);
+    if(write(fd, &event, sizeof(event)) < 0)
+    {
+        fprintf(stderr, "Failed to send key\n");
+        return EXIT_FAILURE;
+    }
+
     return EXIT_SUCCESS;
 }
 
