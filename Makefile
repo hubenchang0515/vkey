@@ -1,4 +1,4 @@
-.PONEY: all clean
+.PHONY: all clean
 
 all: vkey
 
